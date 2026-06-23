@@ -14,7 +14,7 @@ library(janitor)
 # ==========================================================
 
 sales <- read.csv(
-  "data/raw/Sample - Superstore.csv"
+  "Sample - Superstore.csv"
 )
 
 # ==========================================================
@@ -68,6 +68,8 @@ str(sales$order_date)
 # ==========================================================
 # Save Clean Dataset
 # ==========================================================
+
+dir.create("data/cleaned", recursive = TRUE, showWarnings = FALSE)
 
 write.csv(
   sales,
