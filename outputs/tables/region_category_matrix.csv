@@ -1,0 +1,13 @@
+"region","category","total_sales","total_profit","profit_margin"
+"Central","Technology",170416.312,33697.432,19.77
+"Central","Office Supplies",167026.415,8879.9799,5.32
+"Central","Furniture",163797.1638,-2871.0494,-1.75
+"East","Technology",264973.981,47462.0351,17.91
+"East","Furniture",208291.204,3046.1658,1.46
+"East","Office Supplies",205516.055,41014.5791,19.96
+"South","Technology",148771.908,19991.8314,13.44
+"South","Office Supplies",125651.313,19986.3928,15.91
+"South","Furniture",117298.684,6771.2061,5.77
+"West","Furniture",252612.7435,11504.9503,4.55
+"West","Technology",251991.832,44303.6496,17.58
+"West","Office Supplies",220853.249,52609.849,23.82
