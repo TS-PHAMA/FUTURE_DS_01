@@ -13,7 +13,8 @@ library(janitor)
 # Import Data
 # ==========================================================
 
-sales <- read.csv("C:/Users/THEMBINKOSI/Downloads/GitHub Projects/FUTURE_DS_01/data/raw/Sample - Superstore.csv")
+sales <- read.csv(
+  "data/raw/Sample - Superstore.csv")
 
 # ==========================================================
 # Initial Inspection
