@@ -1,0 +1,623 @@
+\documentclass[11pt,a4paper]{article}
+
+% Packages for sophisticated design
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+\usepackage{colortbl}
+\usepackage{multirow}
+
+% Define brand colors
+\definecolor{primary}{HTML}{2C3E50}
+\definecolor{accent}{HTML}{2E86AB}
+\definecolor{profitgreen}{HTML}{27AE60}
+\definecolor{warningred}{HTML}{E74C3C}
+\definecolor{gold}{HTML}{F39C12}
+\definecolor{lightgray}{HTML}{ECF0F1}
+\definecolor{darktext}{HTML}{2C3E50}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=accent,
+    filecolor=accent,
+    urlcolor=accent,
+    citecolor=accent
+}
+
+% Fancy headers
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\color{primary}\small Business Sales Performance Analytics}
+\fancyhead[R]{\color{primary}\small Future Interns — DS Task 1}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{accent}\leaders\hrule height \headrulewidth\hfill}}
+
+% Section formatting
+\titleformat{\section}
+  {\color{primary}\Large\bfseries}
+  {\thesection}{1em}{}[\titlerule]
+\titleformat{\subsection}
+  {\color{accent}\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% Custom boxes
+\newtcolorbox{kpi-box}[1]{
+    colback=#1!10,
+    colframe=#1!50,
+    boxrule=0.5pt,
+    arc=4pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt
+}
+
+% Start document
+\begin{document}
+
+% =============================================
+% COVER PAGE
+% =============================================
+\begin{titlepage}
+    \begin{tikzpicture}[remember picture, overlay]
+        % Top accent bar
+        \fill[accent] (current page.north west) rectangle (current page.north east);
+        \fill[primary] (current page.north west) rectangle ([yshift=-8pt]current page.north east);
+        
+        % Left decorative line
+        \fill[accent, opacity=0.3] (current page.north west) rectangle ([xshift=4pt]current page.south west);
+        
+        % Bottom accent
+        \fill[primary] (current page.south west) rectangle ([yshift=4pt]current page.south east);
+    \end{tikzpicture}
+    
+    \vspace*{3cm}
+    
+    \begin{center}
+        {\color{primary}\fontsize{28}{34}\selectfont\bfseries Business Sales\\[8pt]Performance Analytics}
+        
+        \vspace{1.5cm}
+        
+        {\color{accent}\Large Executive Report with Statistical Analysis}
+        
+        \vspace{2cm}
+        
+        \begin{tcolorbox}[
+            colback=lightgray,
+            colframe=accent,
+            boxrule=0.5pt,
+            arc=4pt,
+            width=0.8\textwidth,
+            center
+        ]
+            \begin{center}
+                {\color{primary}\large\textbf{Future Interns}}\\[4pt]
+                {\color{darktext}Data Science \& Analytics — Task 1}\\[4pt]
+                {\color{darktext}Business Sales Performance Analytics}
+            \end{center}
+        \end{tcolorbox}
+        
+        \vspace{2.5cm}
+        
+        {\color{darktext}\large\textbf{Prepared by:} Thembinkosi Phama}\\[6pt]
+        {\color{darktext}\large\textbf{Date:} \today}\\[6pt]
+        {\color{darktext}\large\textbf{Repository:} FUTURE\_DS\_01}
+        
+        \vfill
+        
+        \begin{center}
+            \begin{tikzpicture}
+                \draw[accent, line width=1pt] (0,0) -- (4,0);
+                \draw[accent, line width=1pt] (6,0) -- (10,0);
+                \fill[accent] (5,0) circle (4pt);
+                \fill[primary] (5,0) circle (2pt);
+            \end{tikzpicture}
+        \end{center}
+        
+        \vspace{1cm}
+    \end{center}
+\end{titlepage}
+
+% =============================================
+% TABLE OF CONTENTS
+% =============================================
+\newpage
+\renewcommand{\contentsname}{\color{primary}\Large\bfseries Table of Contents}
+\tableofcontents
+\newpage
+
+% =============================================
+% EXECUTIVE SUMMARY
+% =============================================
+\section{Executive Summary}
+
+\begin{tcolorbox}[
+    colback=accent!5,
+    colframe=accent!40,
+    arc=8pt,
+    left=15pt,
+    right=15pt,
+    top=12pt,
+    bottom=12pt
+]
+This report analyzes \textbf{9,994 transactions} across \textbf{3 categories} and \textbf{4 regions} to identify revenue drivers, profitability patterns, and strategic opportunities for business growth.
+\end{tcolorbox}
+
+\vspace{12pt}
+
+\subsection{Key Performance Indicators}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{5cm} p{5cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total Sales & \textbf{\$2,297,201} \\
+Total Profit & \textbf{\$286,397} \\
+Profit Margin & \textbf{12.47\%} \\
+Total Orders & 5,009 \\
+Total Customers & 793 \\
+Average Order Value & \$458.61 \\
+\bottomrule
+\end{tabular}
+\caption{Business Key Performance Indicators}
+\end{table}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!30,
+    arc=8pt,
+    left=12pt,
+    right=12pt
+]
+\textbf{Key Finding:} The business generated \textbf{\$2.3M in revenue} with a \textbf{12.47\% profit margin}, indicating healthy overall operations. However, significant value is being destroyed in specific categories and regions — Furniture (2.49\% margin) and the Central region (7.92\% margin) require immediate attention.
+\end{tcolorbox}
+
+% =============================================
+% DATA OVERVIEW
+% =============================================
+\section{Data Overview}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{4cm} p{6cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Attribute} & \textbf{Description} \\
+\midrule
+Dataset Source & Sample Superstore Dataset \\
+Analysis Period & 2014-01-03 to 2017-12-30 \\
+Total Transactions & 9,994 \\
+Unique Products & 1,862 \\
+Categories & Furniture, Office Supplies, Technology \\
+Regions & West, East, Central, South \\
+Data Quality & 0 missing values, 0 duplicates \\
+\bottomrule
+\end{tabular}
+\caption{Dataset Characteristics}
+\end{table}
+
+\subsection{Business Questions Addressed}
+\begin{enumerate}[label=\color{accent}\textbf{Q\arabic*:}, leftmargin=*]
+    \item Which products generate the most revenue?
+    \item How do sales change over time?
+    \item Which categories are most profitable?
+    \item Which regions perform best?
+    \item What recommendations can improve business growth?
+\end{enumerate}
+
+% =============================================
+% CATEGORY PERFORMANCE
+% =============================================
+\section{Category Performance}
+
+\subsection{Revenue and Profit Analysis}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{3cm} p{2.5cm} p{2.5cm} p{2cm} p{2cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Category} & \textbf{Sales} & \textbf{Profit} & \textbf{Sales \%} & \textbf{Profit \%} \\
+\midrule
+\rowcolor{accent!5}
+Technology & \$836,154 & \textcolor{profitgreen}{\$145,455} & 36.4\% & 50.8\% \\
+Furniture & \$742,000 & \textcolor{warningred}{\$18,451} & 32.3\% & 6.4\% \\
+\rowcolor{lightgray}
+Office Supplies & \$719,047 & \textcolor{profitgreen}{\$122,491} & 31.3\% & 42.8\% \\
+\bottomrule
+\end{tabular}
+\caption{Category Performance Summary}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{3cm} p{2.5cm} p{2.5cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Category} & \textbf{Profit Margin} & \textbf{Assessment} \\
+\midrule
+\rowcolor{accent!5}
+Technology & 17.40\% & \textcolor{profitgreen}{\textbf{Excellent — Market Leader}} \\
+\rowcolor{lightgray}
+Office Supplies & 17.04\% & \textcolor{profitgreen}{\textbf{Strong — Highly Efficient}} \\
+Furniture & 2.49\% & \textcolor{warningred}{\textbf{Critical — Requires Intervention}} \\
+\bottomrule
+\end{tabular}
+\caption{Category Profit Margin Assessment}
+\end{table}
+
+\subsection{Key Category Insights}
+
+\begin{tcolorbox}[
+    colback=profitgreen!5,
+    colframe=profitgreen!40,
+    title=\textbf{Technology — The Star Performer},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+Generates \textbf{36.4\% of revenue} but \textbf{50.8\% of total profit}. Every dollar in Technology sales converts to 17.4 cents in profit. This category deserves increased investment, marketing budget allocation, and inventory prioritization.
+\end{tcolorbox}
+
+\vspace{8pt}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!40,
+    title=\textbf{Furniture — The Warning Signal},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+Despite generating \textbf{\$742,000 in sales} (32.3\% of revenue), Furniture contributes only \textbf{\$18,451 in profit} (6.4\% of total profit). The 2.49\% profit margin indicates severe pricing, discounting, or cost structure issues that require immediate investigation.
+\end{tcolorbox}
+
+% =============================================
+% SUB-CATEGORY ANALYSIS
+% =============================================
+\section{Sub-Category Deep Dive}
+
+\subsection{Top Performers by Profit}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{3cm} p{3cm} p{2.5cm} p{2cm} p{2cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Category} & \textbf{Sub-Category} & \textbf{Sales} & \textbf{Profit} & \textbf{Margin} \\
+\midrule
+Technology & Copiers & \$149,528 & \$46,618 & 31.2\% \\
+Office Supplies & Paper & \$78,479 & \$34,053 & 43.4\% \\
+Technology & Phones & \$330,007 & \$44,515 & 13.5\% \\
+Office Supplies & Binders & \$203,413 & \$30,221 & 14.9\% \\
+Technology & Accessories & \$167,380 & \$41,937 & 25.1\% \\
+\bottomrule
+\end{tabular}
+\caption{Top 5 Most Profitable Sub-Categories}
+\end{table}
+
+\subsection{Loss-Making Sub-Categories}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!60,
+    title=\textbf{Value Destruction Alert},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+Several sub-categories are consistently losing money:
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Tables} (Furniture) — Significant losses despite high sales volume
+    \item \textbf{Bookcases} (Furniture) — Negative profit margins
+    \item \textbf{Supplies} (Office Supplies) — Low margin performance
+\end{itemize}
+These sub-categories require pricing review, cost analysis, or potential discontinuation.
+\end{tcolorbox}
+
+% =============================================
+% REGIONAL PERFORMANCE
+% =============================================
+\section{Regional Performance}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{2.5cm} p{2.5cm} p{2.5cm} p{2cm} p{2cm} p{2cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Region} & \textbf{Sales} & \textbf{Profit} & \textbf{Sales \%} & \textbf{Profit \%} & \textbf{Margin} \\
+\midrule
+\rowcolor{accent!5}
+West & \$725,458 & \$108,418 & 31.6\% & 37.9\% & \textcolor{profitgreen}{14.9\%} \\
+East & \$678,781 & \$91,523 & 29.6\% & 32.0\% & 13.5\% \\
+Central & \$501,240 & \$39,706 & 21.8\% & 13.9\% & \textcolor{warningred}{7.9\%} \\
+\rowcolor{lightgray}
+South & \$391,722 & \$46,749 & 17.0\% & 16.3\% & 11.9\% \\
+\bottomrule
+\end{tabular}
+\caption{Regional Performance Summary}
+\end{table}
+
+\subsection{Regional Insights}
+
+\begin{tcolorbox}[
+    colback=profitgreen!5,
+    colframe=profitgreen!40,
+    title=\textbf{West — The Gold Standard},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+The West region leads all metrics: highest sales (\$725K), highest profit (\$108K), and best profit margin (14.9\%). California alone contributes \$457K in sales with \$76K profit. The West's operational practices should be documented and replicated across other regions.
+\end{tcolorbox}
+
+\vspace{8pt}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!40,
+    title=\textbf{Central — Critical Underperformance},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+Despite generating 21.8\% of sales, the Central region contributes only 13.9\% of profit with a 7.92\% margin — nearly half of West's 14.9\%. Texas is particularly problematic: \$170K in sales but \textbf{-\$25,729 in losses}.
+\end{tcolorbox}
+
+% =============================================
+% STATISTICAL ANALYSIS
+% =============================================
+\section{Statistical Analysis}
+
+\subsection{Correlation Analysis}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{4cm} p{4cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Segment} & \textbf{Correlation (Sales vs Profit)} \\
+\midrule
+Overall & 0.479 \\
+\midrule
+\rowcolor{accent!5}
+Technology & 0.505 \\
+Office Supplies & 0.551 \\
+\rowcolor{warningred!10}
+\textbf{Furniture} & \textbf{0.174 — Warning} \\
+\midrule
+West & 0.648 \\
+Central & 0.641 \\
+East & 0.524 \\
+\rowcolor{warningred!10}
+\textbf{South} & \textbf{0.007 — Critical} \\
+\bottomrule
+\end{tabular}
+\caption{Correlation Analysis Results}
+\end{table}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!60,
+    title=\textbf{Statistical Warning},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+\textbf{South region} shows a near-zero correlation (0.007) between sales and profit — meaning higher sales do NOT translate to higher profits in this region. \textbf{Furniture} (0.174) shows the weakest category correlation, confirming that revenue in Furniture does not predict profitability.
+\end{tcolorbox}
+
+\subsection{ANOVA — Significance Testing}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{5cm} p{3cm} p{3cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Test} & \textbf{p-value} & \textbf{Result} \\
+\midrule
+Profit $\sim$ Category & $3.47 \times 10^{-24}$ & \textcolor{profitgreen}{\textbf{Highly Significant}} \\
+Profit $\sim$ Region & 0.049 & \textcolor{profitgreen}{\textbf{Significant}} \\
+\bottomrule
+\end{tabular}
+\caption{ANOVA Results}
+\end{table}
+
+\textbf{Tukey HSD Findings:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Technology outperforms Furniture} by approximately \$70 per order (p < 0.001)
+    \item \textbf{Technology outperforms Office Supplies} by approximately \$58 per order (p < 0.001)
+    \item \textbf{West outperforms Central} by approximately \$17 per order (p = 0.043)
+    \item Other regional differences are not statistically significant
+\end{itemize}
+
+\subsection{Linear Regression}
+
+\textbf{Model:} Profit = $\beta_0 + \beta_1$(Sales) + $\beta_2$(Category) + $\beta_3$(Region) + $\varepsilon$
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{4cm} p{3cm} p{3cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Statistic} & \textbf{Simple Model} & \textbf{Multiple Model} \\
+\midrule
+R-squared & 0.2295 & 0.2387 \\
+Adjusted R-squared & 0.2294 & 0.2383 \\
+Sales Coefficient & \$0.18 & \$0.18 \\
+Intercept & -\$12.73 & -\$65.04 \\
+\bottomrule
+\end{tabular}
+\caption{Regression Model Summary}
+\end{table}
+
+\textbf{Interpretation:} Every additional dollar in sales generates approximately \$0.18 in profit. Sales alone explains only 23\% of profit variation, indicating other factors (discounts, shipping costs, product mix) play significant roles.
+
+\subsection{Discount Impact Analysis}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{3.5cm} p{2.5cm} p{2.5cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Discount Level} & \textbf{Avg Profit/Order} & \textbf{\% of Orders} \\
+\midrule
+\rowcolor{profitgreen!10}
+No Discount & +\$66.90 & 48.0\% \\
+Low ($\leq$20\%) & +\$26.50 & 38.1\% \\
+\rowcolor{warningred!10}
+Medium (21-50\%) & -\$110.00 & 5.4\% \\
+\rowcolor{warningred!10}
+High (>50\%) & -\$89.40 & 8.6\% \\
+\bottomrule
+\end{tabular}
+\caption{Profit by Discount Level}
+\end{table}
+
+\begin{tcolorbox}[
+    colback=warningred!5,
+    colframe=warningred!60,
+    title=\textbf{Critical Finding — Discount Correlation: -0.219},
+    fonttitle=\bfseries,
+    arc=6pt
+]
+\textbf{14\% of all orders} have discounts exceeding 20\% and lose an average of \textbf{\$98 per order}. This represents significant value destruction. The correlation between discount level and profit is \textbf{-0.219}, confirming that higher discounts systematically reduce profitability.
+\end{tcolorbox}
+
+% =============================================
+% RECOMMENDATIONS
+% =============================================
+\section{Recommendations}
+
+\subsection{Immediate Actions (0--3 Months)}
+
+\begin{enumerate}[label=\color{warningred}\textbf{\theenumi.}, leftmargin=*]
+    \item \textbf{Cap discounts at 20\%} — 14\% of orders with high discounts are destroying value
+    \item \textbf{Investigate Furniture pricing} — 2.49\% margin is unsustainable; review Tables and Bookcases
+    \item \textbf{Audit Texas, Ohio, Pennsylvania} — These states show high sales but significant losses
+\end{enumerate}
+
+\subsection{Strategic Initiatives (3--12 Months)}
+
+\begin{enumerate}[label=\color{accent}\textbf{\theenumi.}, leftmargin=*]
+    \setcounter{enumi}{3}
+    \item \textbf{Replicate West region best practices} — Document and deploy the 14.9\% margin model
+    \item \textbf{Prioritize Technology inventory} — Generates \$70 more profit per order than Furniture
+    \item \textbf{Restructure South region} — Sales-profit correlation near zero requires fundamental changes
+\end{enumerate}
+
+\subsection{Risk Management}
+
+\begin{enumerate}[label=\color{gold}\textbf{\theenumi.}, leftmargin=*]
+    \setcounter{enumi}{6}
+    \item \textbf{Implement discount approval workflow} — Require management sign-off for discounts above 20\%
+    \item \textbf{Exit or restructure loss-making sub-categories} — Discontinue consistently unprofitable lines
+    \item \textbf{Set regional profit margin targets} — Address Central region's 7.92\% margin gap
+\end{enumerate}
+
+\subsection{Estimated Financial Impact}
+
+\begin{tcolorbox}[
+    colback=profitgreen!5,
+    colframe=profitgreen!50,
+    arc=8pt,
+    left=15pt,
+    right=15pt
+]
+Implementing these recommendations could improve overall profit margin by \textbf{2--4 percentage points}, representing approximately \textbf{\$46,000--\$92,000 in additional annual profit}.
+\end{tcolorbox}
+
+% =============================================
+% METHODOLOGY
+% =============================================
+\section{Methodology}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}p{4cm} p{7cm}@{}}
+\toprule
+\rowcolor{primary!10}
+\textbf{Technique} & \textbf{Purpose} \\
+\midrule
+Data Cleaning & Missing value detection, duplicate removal, date standardization \\
+Descriptive Statistics & KPI calculation, categorical aggregation \\
+Correlation Analysis & Identify relationships between sales, profit, and discounts \\
+ANOVA with Tukey HSD & Test statistical significance of category and regional differences \\
+Linear Regression & Model profit drivers and quantify relationships \\
+Data Visualization & Professional charts and dashboards \\
+\bottomrule
+\end{tabular}
+\caption{Analytical Methodology}
+\end{table}
+
+\textbf{Tools Used:} R Statistical Computing Environment, tidyverse, ggplot2, scales, broom, knitr
+
+% =============================================
+% CONCLUSION
+% =============================================
+\section{Conclusion}
+
+\begin{tcolorbox}[
+    colback=primary!5,
+    colframe=primary!50,
+    arc=8pt,
+    left=15pt,
+    right=15pt,
+    top=15pt,
+    bottom=15pt
+]
+The business demonstrates strong overall performance with \textbf{\$2.3M in revenue} and \textbf{12.47\% profit margin}. However, significant value is being destroyed in specific areas that require immediate management attention.
+
+\vspace{8pt}
+
+\textbf{Key Takeaways:}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Technology and Office Supplies} are the profit engines, each with margins above 17\%
+    \item \textbf{West region} represents the operational excellence model with 14.9\% margins
+    \item \textbf{Furniture category} (2.49\% margin) and \textbf{Central region} (7.92\% margin) require strategic intervention
+    \item \textbf{Excessive discounting} on 14\% of orders systematically erodes profitability
+    \item Statistical evidence confirms that category and regional differences are \textbf{statistically significant}
+\end{itemize}
+
+\vspace{8pt}
+
+The data clearly indicates that targeted interventions — rather than broad strategic changes — will yield the greatest return on management effort. By focusing on the specific problem areas identified in this analysis, the business can protect and grow profitability while maintaining revenue momentum.
+
+\vspace{8pt}
+
+\begin{center}
+\textbf{Estimated Impact: \$46,000--\$92,000 in additional annual profit}
+\end{center}
+\end{tcolorbox}
+
+\vspace{1cm}
+
+\begin{center}
+\begin{tikzpicture}
+    \fill[accent] (0,0) rectangle (15,0.3);
+    \fill[primary] (0,0) rectangle (15,0.1);
+\end{tikzpicture}
+
+\vspace{6pt}
+
+{\color{darktext}\small Report prepared for \textbf{Future Interns — Data Science \& Analytics Task 1}}\\[4pt]
+{\color{darktext}\small Analysis conducted using R Statistical Computing Environment}\\[4pt]
+{\color{darktext}\small \today}
+\end{center}
+
+\end{document}
