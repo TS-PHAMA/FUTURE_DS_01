@@ -2,89 +2,175 @@
 
 ## Business Sales Performance Analytics
 
-### Future Interns – Data Science & Analytics Task 1
+**Future Interns — Data Science & Analytics Task 1**
 
-## Project Overview
-
-This project analyzes retail sales data to identify revenue trends, top-performing products, profitable categories, and regional performance.
-
-The goal is to transform raw business data into actionable insights that can support business decision-making and improve profitability.
+![R](https://img.shields.io/badge/R-276DC3?style=for-the-badge&logo=r&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Complete-success?style=for-the-badge)
 
 ---
 
-## Business Questions
+## 📊 Project Overview
 
-1. Which products generate the highest revenue?
-2. Which products generate the highest profit?
-3. How do sales change over time?
-4. Which categories perform best?
-5. Which regions contribute most to profit?
-6. What recommendations can improve business performance?
+This project analyzes **9,994 retail transactions** from the Superstore dataset to identify revenue trends, top-performing products, profitable categories, and regional performance. The objective is to generate **actionable business insights** that can support strategic decision-making and improve profitability.
 
 ---
 
-## Dataset
+## 🎯 Business Questions Answered
 
-Sample Superstore Dataset
-
-Observations: 9,994
-
-Variables include:
-
-* Sales
-* Profit
-* Quantity
-* Category
-* Sub-Category
-* Region
-* State
-* Product Name
-* Order Date
+1. ✅ Which products generate the most revenue?
+2. ✅ How do sales change over time?
+3. ✅ Which categories are most profitable?
+4. ✅ Which regions perform best?
+5. ✅ What recommendations can improve business growth?
 
 ---
 
-## Tools Used
+## 📈 Key Performance Indicators
 
-* R
-* tidyverse
-* ggplot2
-* dplyr
-* lubridate
-* janitor
-* plotly
-* rmarkdown
-* flexdashboard
-
----
-
-## Methodology
-
-1. Data Cleaning
-2. Exploratory Data Analysis
-3. Product Performance Analysis
-4. Category Analysis
-5. Regional Analysis
-6. Statistical Analysis
-7. Business Recommendations
+| Metric | Value |
+|--------|-------|
+| **Total Sales** | **$2,297,201** |
+| **Total Profit** | **$286,397** |
+| **Profit Margin** | **12.47%** |
+| Total Orders | 5,009 |
+| Total Customers | 793 |
+| Average Order Value | $458.61 |
 
 ---
 
-## Repository Structure
+## 🔍 Key Findings
 
-data/ - Raw and cleaned datasets
+### Category Performance
+- ⭐ **Technology** leads: $836K sales, $145K profit, 17.4% margin
+- ⚠️ **Furniture** warning: $742K sales but only $18K profit (2.49% margin)
+- ✅ **Office Supplies**: $719K sales, $122K profit, 17.0% margin
 
-scripts/ - R scripts
+### Regional Analysis
+- 🏆 **West region** dominates: 31.6% of sales, 37.9% of profit, 14.9% margin
+- ⚠️ **Central region** underperforms: 7.92% margin (half of West)
+- ❌ **South region** critical: Sales-profit correlation = 0.007
 
-outputs/ - Figures, tables, and model outputs
-
-report/ - Final business report
-
-dashboard/ - Interactive dashboard
+### Statistical Evidence
+- **ANOVA confirms** category and regional differences are statistically significant (p < 0.05)
+- **Correlation:** Sales explains only 23% of profit variation
+- **Discount impact:** 14% of orders with high discounts lose $98/order on average
+- **Regression:** Every $1 in sales generates approximately $0.18 in profit
 
 ---
 
-## Status
+## 💼 Business Recommendations
 
-Project setup completed.
+### Immediate Actions (0-3 months)
+1. **Cap discounts at 20%** — 14% of orders with high discounts destroy value
+2. **Investigate Furniture pricing** — 2.49% margin is unsustainable
+3. **Audit Texas, Ohio, Pennsylvania** — High sales but significant losses
 
-Analysis in progress.
+### Strategic Initiatives (3-12 months)
+4. **Replicate West region model** — 14.9% margin best practice
+5. **Prioritize Technology inventory** — $70 more profit per order than Furniture
+6. **Restructure South region** — Sales and profit are unrelated
+
+### Estimated Impact
+Implementing recommendations could add **$46K–$92K in annual profit**.
+
+---
+
+## 🛠️ Tools & Techniques
+
+| Technique | Purpose |
+|-----------|---------|
+| **R / tidyverse** | Data cleaning, transformation, analysis |
+| **ggplot2** | Professional data visualizations |
+| **ANOVA + Tukey HSD** | Statistical significance testing |
+| **Linear Regression** | Profit driver modeling |
+| **Correlation Analysis** | Sales-Profit-Discount relationships |
+| **R Markdown / LaTeX** | Professional report generation |
+| **Git / GitHub** | Version control and portfolio |
+
+---
+
+## 📁 Repository Structure
+FUTURE_DS_01/
+├── data/
+│ ├── raw/ # Original Superstore dataset
+│ └── cleaned/ # Processed clean data
+│
+├── scripts/
+│ ├── 00_setup.R # Package installation
+│ ├── 01_data_cleaning.R # Import, clean, validate
+│ ├── 02_exploratory_analysis.R # KPI calculations
+│ ├── 03_category_analysis.R # Category performance
+│ ├── 04_subcategory_analysis.R # Sub-category deep dive
+│ ├── 05_regional_analysis.R # Geographic analysis
+│ └── 06_statistical_analysis.R # ANOVA, regression, correlation
+│
+├── outputs/
+│ ├── figures/ # 14 publication-quality charts
+│ └── tables/ # All analysis results (CSV)
+│
+├── report/
+│ └── final_report.tex # Overleaf/LaTeX professional report
+│
+├── dashboard/
+├── README.md
+└── LICENSE
+
+text
+
+---
+
+## 📸 Visualizations
+
+### Category Performance
+![Category Sales](outputs/figures/category_sales.png)
+![Category Profit](outputs/figures/category_profit.png)
+
+### Regional Analysis
+![Region Sales](outputs/figures/region_sales.png)
+![Region Profit](outputs/figures/region_profit.png)
+
+### Statistical Analysis
+![Sales vs Profit](outputs/figures/sales_vs_profit_scatter.png)
+![Discount Impact](outputs/figures/discount_impact.png)
+
+### Sub-Category Deep Dive
+![Subcategory Sales](outputs/figures/subcategory_sales.png)
+![Top 10 Profit](outputs/figures/top10_profit_subcategories.png)
+![Bottom 10 Profit](outputs/figures/bottom10_profit_subcategories.png)
+
+---
+
+## 📝 Methodology
+
+1. **Data Cleaning** — Missing values, duplicates, date standardization
+2. **Exploratory Analysis** — KPI calculation, trend identification
+3. **Category Analysis** — Revenue and profit drivers by category
+4. **Sub-Category Analysis** — Identify loss-makers and top performers
+5. **Regional Analysis** — Geographic performance patterns
+6. **Statistical Analysis** — Correlation, ANOVA, Regression, Discount Impact
+7. **Business Recommendations** — Evidence-based strategic guidance
+
+---
+
+## 🎓 Skills Demonstrated
+
+- Data cleaning and preparation
+- Business-focused KPI analysis
+- Statistical inference and hypothesis testing
+- Professional data visualization (ggplot2)
+- Insight generation and business storytelling
+- Reproducible research practices
+- Git version control and portfolio development
+
+---
+
+## 📞 Connect
+
+**Author:** Thembinkosi Phama  
+**Repository:** [FUTURE_DS_01](https://github.com/TS-PHAMA/FUTURE_DS_01)  
+**Internship:** Future Interns — Data Science & Analytics Track
+
+---
+
+*© 2026 — Future Interns Data Science & Analytics Task 1*
