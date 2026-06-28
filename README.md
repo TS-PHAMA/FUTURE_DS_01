@@ -89,35 +89,6 @@ Implementing recommendations could add **$46K–$92K in annual profit**.
 | **Git / GitHub** | Version control and portfolio |
 
 ---
-
-## 📁 Repository Structure
-FUTURE_DS_01/
-├── data/
-│ ├── raw/ # Original Superstore dataset
-│ └── cleaned/ # Processed clean data
-│
-├── scripts/
-│ ├── 00_setup.R # Package installation
-│ ├── 01_data_cleaning.R # Import, clean, validate
-│ ├── 02_exploratory_analysis.R # KPI calculations
-│ ├── 03_category_analysis.R # Category performance
-│ ├── 04_subcategory_analysis.R # Sub-category deep dive
-│ ├── 05_regional_analysis.R # Geographic analysis
-│ └── 06_statistical_analysis.R # ANOVA, regression, correlation
-│
-├── outputs/
-│ ├── figures/ # 14 publication-quality charts
-│ └── tables/ # All analysis results (CSV)
-│
-├── report/
-│ └── final_report.tex # Overleaf/LaTeX professional report
-│
-├── dashboard/
-├── README.md
-└── LICENSE
-
-text
-
 ---
 
 ## 📸 Visualizations
